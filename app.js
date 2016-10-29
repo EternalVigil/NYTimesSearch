@@ -1,18 +1,26 @@
 	// Built by LucyBot. www.lucybot.com
 var searchURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
 var key = "ca789060234c4688a4bc3a324e26de6c";
-var keyword = $("#searchTerm").val();
-var startDate = $("#startYear").val(); //Format YYYYMMDD
-var endDate = $("#endYear").val();
+var keyword = "";
+var startDate = "";
+var endDate = "";
+var recordsLimit = 0;
 
-	var recordsLimit = 5;
-	
+$("#submit").on("click",function(){
+keyword = $("#searchTerm").val();
+startDate = $("#startYear").val(); //Format YYYYMMDD
+endDate = $("#endYear").val();
+recordsLimit = $("#numRecords").value;	
+
 searchURL += '?' + $.param({
     'api-key': key,
     'q': keyword,
     'begin_date': startDate,
     'end_date': endDate
 });
+
+});
+
 	
 	
 $.ajax({
